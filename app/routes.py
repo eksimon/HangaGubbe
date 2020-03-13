@@ -25,6 +25,10 @@ def addword():
     
     if form.validate_on_submit():
         #lägg till ord  DB
+        word = Word(word=form.addword.data)
+        db.session.add(word)
+        db.session.commit()
+        flash('Ordet har lagts till')
         
         return redirect(url_for('index'))
     
