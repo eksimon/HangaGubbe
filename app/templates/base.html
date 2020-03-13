@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title></title>
+
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{{ url_for ('static', filename='styles.css') }}">
+
+    <script src="{{ url_for ('static', filename='javascript.js') }}"></script>
+
+</head>
+
+<body>
+
+    <div id="nav">
+
+        <h1><a href="{{ url_for('index') }}">Hänga Gubbe</a></h1>
+
+        <a href="{{ url_for('game') }}" class="link">Spelet</a>
+        <a href="{{ url_for('addword') }}" class="link">Lägg till ord</a>
+
+        <hr>
+
+    </div>
+
+    {% block content %}{% endblock %}
+
+</body>
+
+</html>

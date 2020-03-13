@@ -1,0 +1,25 @@
+h1 {
+ 
+    width: auto;
+    
+}
+    
+a {
+
+    color: black;
+    text-decoration: none;
+
+}
+
+.link {
+    
+    padding: 5px;
+    transition: .3s;
+    
+}
+
+.link:hover {
+    
+    box-shadow: 0px 0px 10px rgba(0,0,0,.3)
+    
+}
