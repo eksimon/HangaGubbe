@@ -6,4 +6,4 @@ class Word(db.Model):
     word = db.Column(db.String(64), index=True, unique=True)
     
     def __repr__(self):
-        return 
+        return '<Word> {}'.format(self.word)

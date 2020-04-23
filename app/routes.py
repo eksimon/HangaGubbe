@@ -1,6 +1,7 @@
-from app import app
-from flask import render_template, url_for, redirect
+from app import app, db
+from flask import render_template, url_for, redirect, flash
 from app.forms import AddWordForm
+from app.models import Word
 
 
 @app.route('/')
@@ -13,7 +14,7 @@ def index():
 def game():
     
     #hämta slumpat ord från DB
-    
+    word = "HÄMTA SLUMPAT ORD"
     
     return render_template('game.html', title="Hänga Gubbe")
 
@@ -25,7 +26,9 @@ def addword():
     
     if form.validate_on_submit():
         #lägg till ord  DB
-        word = Word(word=form.addword.data)
+        print('Validated')
+        
+        word = Word(word=form.word.data)
         db.session.add(word)
         db.session.commit()
         flash('Ordet har lagts till')
