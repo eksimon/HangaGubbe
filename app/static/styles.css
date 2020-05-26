@@ -20,6 +20,30 @@ a {
 
 .link:hover {
     
-    box-shadow: 0px 0px 10px rgba(0,0,0,.3)
+    box-shadow: 0px 0px 10px rgba(0,0,0,.5);
+    border-radius: 10px;
+        
+    
+}
+
+
+#alphabet li {
+    float:left;
+    margin: 0 10px 10px 0;
+    list-style:none;
+    width:35px;
+    height:30px;
+    padding-top:10px;
+    background:$white;
+    color:$base-color;
+    cursor:pointer;
+    @include corners(5px);
+    border: solid 1px $white;
+}
+
+
+#wordDB {
+    
+    display: none;
     
 }

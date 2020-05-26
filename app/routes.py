@@ -2,6 +2,7 @@ from app import app, db
 from flask import render_template, url_for, redirect, flash
 from app.forms import AddWordForm
 from app.models import Word
+from random import randint
 
 
 @app.route('/')
@@ -13,10 +14,14 @@ def index():
 @app.route('/game', methods=['GET', 'POST'])
 def game():
     
-    #hämta slumpat ord från DB
-    word = "HÄMTA SLUMPAT ORD"
+    #lägger alla ord i databasen i en lista   
+    dbword = Word.query.all()
+    #slumpar ett nummer mellan 1 och listans längd
+    wordnumber = randint(1, len(dbword))   
+    #tar ut det ord som motsvarar randomiserade siffran
+    word = dbword[wordnumber]
     
-    return render_template('game.html', title="Hänga Gubbe")
+    return render_template('game.html', title="Hänga Gubbe", word=word)
 
 
 @app.route('/addword', methods=['GET', 'POST'])
