@@ -2,25 +2,23 @@ var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
     'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
     't', 'u', 'v', 'w', 'x', 'y', 'z', 'å', 'ä', 'ö'];
 
-var word; //= importera från databas
+var word;
 
 var guesses = [];
 var counter;
 
-//var showLives = document.getElementById('mylives');
 var lives;
-
-console.log(alphabet);
 
 // Genererar hela alfabetet som knappar
 function buttons() {
-
-    console.log("buttons");
+    
+    // Skapar en lista i diven buttons
     myButtons = document.getElementById('buttons');
     letters = document.createElement('ul');
 
     for (var i = 0; i < alphabet.length; i++) {
 
+        // Lägger till en knapp för 
         letters.id = 'alphabet';
         list = document.createElement('li');
         list.id = 'letter';
@@ -29,9 +27,7 @@ function buttons() {
         myButtons.appendChild(letters);
         letters.appendChild(list);
 
-    }
-    
-    document.getElementById('start').style.display = 'none'
+    }   
 
 }
 
@@ -73,8 +69,7 @@ function comments() {
 
 function end() {
     
-    document.getElementById('start').style.display = "table";
-    
+    document.getElementById('restart').style.display = "table";    
     
 }
 
@@ -175,6 +170,8 @@ function drawArray(toDraw) {
 
 
 function play() {
+    
+    document.getElementById('start').style.display = 'none'
         
     lives = 10;
     counter = 0;
@@ -182,8 +179,6 @@ function play() {
     var wordArray = document.getElementById('wordDB').innerHTML;
     wordArray = wordArray.split(' ');
     word = wordArray[1].toLowerCase();
-    
-    console.log(word);
     
     buttons();    
     wordletters();
@@ -193,17 +188,5 @@ function play() {
     document.getElementById('hold').style.display = 'table';
     document.getElementById('myLives').style.display = 'table';
     document.getElementById('stickman').style.display = 'table';
-    
-    document.getElementById('start').setAttribute('onClick', "restart()");
-    document.getElementById('start').innerHTML = "Spela igen";
-    
-}
-
-function restart() {
-    
-    letters.parentNode.removeChild(letters);
-    correctWord.parentNode.removeChild(correctWord);
-    
-    play();
     
 }

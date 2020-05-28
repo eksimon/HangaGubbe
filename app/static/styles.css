@@ -129,7 +129,20 @@ h4 {
     
 }
 
-
+#restart {
+    
+    display: none;
+    margin: 10px auto;
+    
+    padding: 5px;
+    text-align: center;
+    align-content: center;
+    
+    border: grey solid 2px;
+    border-radius: 7px;    
+    background: #dfd1d1;
+    
+}
 
 
 #wordDB {
