@@ -27,19 +27,109 @@ a {
 }
 
 
-#alphabet li {
-    float:left;
-    margin: 0 10px 10px 0;
-    list-style:none;
-    width:35px;
-    height:30px;
-    padding-top:10px;
-    background:$white;
-    color:$base-color;
-    cursor:pointer;
-    @include corners(5px);
-    border: solid 1px $white;
+
+/* Gäller endast för game.html */
+
+
+h4 {
+    
+    text-align: center;
+    
 }
+
+
+#buttons, #hold, #myLives, #stickman {
+    
+    display: none;
+    
+}
+
+#buttons {
+    
+    margin: 10px auto;
+    
+}
+
+
+#alphabet li {
+    
+    float: left;
+    list-style: none;
+    margin: 0px 5px;
+    
+    text-align: center;
+    width: 15px;
+    padding: 10px;
+    
+    background: black;
+    color: white;
+    border: black solid 1px;
+    border-radius: 5px;
+    
+    font-size: 17px;
+    
+    transition: .3s;
+    
+}
+
+
+#alphabet li:hover {
+    
+    background: white;
+    color: black;
+    
+}
+
+
+.active {
+    
+    opacity: 0.3;
+    
+}
+
+
+#hold {
+    
+    margin: 5px auto;
+    text-align: center;
+    
+}
+
+#correctWord li {
+    
+    float: left;
+    list-style: none;
+    padding: 0 10px 0 10px;
+    font-size: 20px;
+    
+}
+
+
+#myLives {
+    
+    margin: 20px auto;
+    
+}
+
+
+#stickman {
+    
+    margin: 0px auto;
+    border: black groove 2px;
+    
+    width: 300px;
+    height: 200px;
+    
+}
+
+#start {
+    
+    display: table;
+    margin: 0px auto;
+    
+}
+
+
 
 
 #wordDB {

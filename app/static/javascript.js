@@ -35,20 +35,49 @@ function buttons() {
 
 }
 
-// Kommenterar vad som händer
+function wordletters() {
+    
+    correctWord = document.createElement('ul');
+    
+    for (var i = 0; i < word.length; i++) {
+        
+        correctWord.setAttribute('id', 'correctWord');
+        guess = document.createElement('li');
+        guess.setAttribute('class', 'guess');
+        guess.innerHTML = '_';
+        
+        guesses.push(guess);
+        document.getElementById('hold').appendChild(correctWord);
+        correctWord.appendChild(guess);
+        
+    }
+    
+}
+
+// Kommenterar vad som händer + avslutar spelet
 function comments() {
     
-    document.getElementById('myLives').innerHTML = "You have " + lives + " lives";
+    document.getElementById('myLives').innerHTML = "Du har " + lives + " liv kvar";
     if (lives < 1) {
-        document.getElementById('myLives').innerHTML = "Game OVer";
+        document.getElementById('myLives').innerHTML = "Slut på liv!";
+        end();
     }
     for (var i = 0; i < guesses.length; i++) {
         if (counter === guesses.length) {
-            document.getElementById('myLives').innerHTML = "You Win!";
+            document.getElementById('myLives').innerHTML = "Du vann!";
+            end();
         }
     }
     
 }
+
+function end() {
+    
+    document.getElementById('start').style.display = "table";
+    
+    
+}
+
 
 // Kolla om det bokstav man har valt finns i ordet eller inte
 function check() {
@@ -72,7 +101,7 @@ function check() {
         if (j === -1) {
             lives -= 1;
             comments();
-        //    animate();
+            drawArray(lives);
         } else {
             comments();
         }
@@ -82,35 +111,71 @@ function check() {
 }
 
 
-function wordletters() {
+
+
+function draw(fromX, fromY, toX, toY, circle) {
     
-    correctWord = document.createElement('ul');
+    var stickman = document.getElementById('stickman');
+    var context = stickman.getContext('2d');
+    context.beginPath();
+    context.lineWidth = 2;
     
-    for (var i = 0; i < word.length; i++) {
+    if (circle == 1) {
         
-        correctWord.setAttribute('id', 'correctWord');
-        guess = document.createElement('li');
-        guess.setAttribute('class', 'guess');
-        guess.innerHTML = '_';
+        context.arc(fromX, fromY, toX, toY, 2 * Math.PI);
+        context.stroke();
         
-        guesses.push(guess);
-        document.getElementById('hold').appendChild(correctWord);
-        correctWord.appendChild(guess);
+    } else {
         
+        context.moveTo(fromX, fromY);
+        context.lineTo(toX, toY);
+        context.stroke();
+        
+    }    
+    
+}
+
+function drawArray(toDraw) {
+    
+    switch(toDraw) {
+        case 9:
+            draw(20, 140, 280, 140, 0);
+            break;
+        case 8:
+            draw(100, 140, 100, 20, 0);
+            break;
+        case 7:
+            draw(100, 20, 200, 20, 0);
+            break;
+        case 6:
+            draw(200, 20, 200, 40, 0);
+            break;
+        case 5:
+            draw(200, 50, 10, 0, 1);
+            break;
+        case 4:
+            draw(200, 60, 200, 100, 0);
+            break;
+        case 3:
+            draw(200, 70, 210, 90, 0);
+            break;
+        case 2:
+            draw(200, 70, 190, 90, 0);
+            break;
+        case 1:
+            draw(200, 100, 210, 120, 0);
+            break;
+        case 0:
+            draw(200, 100, 190, 120, 0);
+            break;
+            
     }
     
 }
 
 
-function animate() {
-    
-    
-    
-}
-
-
-function restart() {
-    
+function play() {
+        
     lives = 10;
     counter = 0;
     
@@ -123,5 +188,22 @@ function restart() {
     buttons();    
     wordletters();
     comments();
+    
+    document.getElementById('buttons').style.display = 'table';
+    document.getElementById('hold').style.display = 'table';
+    document.getElementById('myLives').style.display = 'table';
+    document.getElementById('stickman').style.display = 'table';
+    
+    document.getElementById('start').setAttribute('onClick', "restart()");
+    document.getElementById('start').innerHTML = "Spela igen";
+    
+}
+
+function restart() {
+    
+    letters.parentNode.removeChild(letters);
+    correctWord.parentNode.removeChild(correctWord);
+    
+    play();
     
 }
